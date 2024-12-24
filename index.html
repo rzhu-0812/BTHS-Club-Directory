@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTHS Club Directory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BTHS Club Directory</h1>
+        <div id="club-list" class="club-list">
+        </div>
+    </div>
+
+    <script>
+        fetch('clubs_data.json')
+            .then(response => response.json())
+            .then(data => {
+                const clubList = document.getElementById('club-list');
+                
+                data.forEach(club => {
+                    const clubDiv = document.createElement('div');
+                    clubDiv.classList.add('club');
+                    
+                    clubDiv.innerHTML = `
+                        <h2>${club['Club Name']}</h2>
+                        <p><strong>Advisor(s):</strong> ${club['Advisor(s)']}</p>
+                        <p><strong>Contact:</strong> <a href="mailto:${club['Contact']}">${club['Contact']}</a></p>
+                        <p><strong>Room(s):</strong> ${club['Room(s)']}</p>
+                        <p><strong>Meeting Day(s):</strong> ${club['Meeting Day(s)']}</p>
+                        <p><strong>Frequency:</strong> ${club['Frequency']}</p>
+                    `;
+                    
+                    clubList.appendChild(clubDiv);
+                });
+            })
+            .catch(error => console.error('Error loading the JSON file:', error));
+    </script>
+</body>
+</html>
