@@ -15,7 +15,7 @@ function renderClubs(clubsToRender) {
 
     clubsToRender.forEach(club => {
         const clubCard = document.createElement('div');
-        clubCard.className = 'bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300';
+        clubCard.className = 'bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow duration-300';
         clubCard.innerHTML = `
             <h2 class="text-xl font-semibold text-blue-600 mb-3">${club['Club Name']}</h2>
             <p class="text-gray-600 mb-2"><strong>Advisor(s): </strong>${club['Advisor(s)']}</p>
@@ -79,4 +79,3 @@ document.getElementById('searchInput').addEventListener('input', filterSortClubs
 document.getElementById('meetingDayFilter').addEventListener('change', filterSortClubs);
 document.getElementById('frequencyFilter').addEventListener('change', filterSortClubs);
 document.getElementById('sortBy').addEventListener('change', filterSortClubs);
-
